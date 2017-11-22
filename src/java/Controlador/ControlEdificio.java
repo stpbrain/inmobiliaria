@@ -8,6 +8,7 @@ package Controlador;
 
 import DB.Conexion;
 import Modelo.Comuna;
+import Modelo.Edificio;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -46,4 +47,23 @@ public class ControlEdificio {
         }
     }
     
+    public boolean InsertarEdificio(Edificio ed)
+    {
+        try {
+              Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+       String ins = "INSERT tb_edificio VALUE ('"+ed.getId_edificio()+"','"+ed.getN_edifico()+"','"+ed.getDireccion()+"',"+ed.getId_comuna()+","+ed.getPosee_permiso()+");";
+            
+             stms.executeUpdate(ins);
+           
+            
+            System.out.println("esta es la query =>"+ins);
+            return true;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    }
 }

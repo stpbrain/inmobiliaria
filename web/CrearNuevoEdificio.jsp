@@ -21,20 +21,29 @@
         
     </head>
     <body>
-        <div class="container " style="width: 100%">
-            <div class=" text-center " > 
-                <table  >
-                    <th colspan="2">
+        <div>
+            
+                 <div class="container-fluid">
+            <div style="background-image: url(img/banner.jpg); background-position: right; background-size: 100%; " class="jumbotron text-center">
+                <h4 class="display-4" >Inmobiliaria <br> Adeudadito mas Feliz</h4>
+            <h5 class="lead">El lugar donde su sueño se hace <h5 style="color: red">Realidad</h5></h5>
+        </div>
+        </div>
+          
+            <div class=" container text-center " > 
+                <form action="./ServletEdificio" name="formedi" method="POST">
+                <table class="table-active ">
+                    <th colspan="2" class="text-center">
                         <h3>Ingrese los datos para un nuevo Edificio</h3>
                     </th>
                     <tr>
                         
-                        <td><h4>Ingrese ID del Edificio :</h4></td>
-                        <td><input type="text" name="id_edificio" class="form-control" </td>
+                        <td><h5>Ingrese ID del Edificio :</h5></td>
+                        <td><input type="text" name="id_edificio" class="form-control" maxlength="4" placeholder="Ingrese Codigo de 4 digitos" </td>
                     </tr>
                     <tr>   
                         <td>
-                            <h4>Ingrese Número del Edificio :</h4>
+                            <h5>Ingrese Nombre del Edificio :</h5>
                         </td>
                         <td>
                             <input type="text" name="n_edificio" class="form-control"
@@ -43,7 +52,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <h4>Ingrese Direccion del Edificio :</h4>
+                            <h5>Ingrese Direccion del Edificio :</h5>
                         </td>
                         <td>
                             <input type="text" name="direccion" class="form-control"
@@ -51,7 +60,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Ingrese comuna del Edificio:
+                            <h5> Ingrese comuna del Edificio:</h5>
                         </td>
                         <td>
                              <select name="comuna">
@@ -66,17 +75,23 @@
                     </tr>
                     <tr>
                         <td>
-                            Posee Permiso :
+                          <h5>  Posee Permiso Municipal :</h5>
                         </td>
                         <td>
                             <select name="permiso">
-                                <option value="0"> No posee</option>
-                                <option value="1"> Si posee</option>
+                                <option value="0"> No posee Permiso</option>
+                                <option value="1"> Si posee Permiso</option>
                             </select>
                         </td>
                         
                     </tr>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <input type="submit" name="btn_guardar" value="Guardar Edificio" class="btn btn-success">
+                        </td>
+                    </tr>
                 </table>
+                </form>
             </div>
             
             
