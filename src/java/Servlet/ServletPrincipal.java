@@ -58,6 +58,14 @@ public class ServletPrincipal extends HttpServlet {
                     dispatcher.forward(request, response);
                    
             }
+            if(btn_buscar_edificio != null)
+            {
+             ControlEdificio ce = new ControlEdificio();
+                  
+                  sesion.setAttribute("comuna", ce.ObtererComuna());
+                   dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
+                    dispatcher.forward(request, response);
+            }
             
             
         }

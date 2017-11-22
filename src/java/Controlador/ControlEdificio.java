@@ -66,4 +66,80 @@ public class ControlEdificio {
             return false;
         }
     }
+    
+    public ArrayList ListarEdificios(int cod)
+    {
+        ArrayList<Edificio> list_edi = new ArrayList<Edificio>();
+        try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+            
+            String listar = "SELECT ID_EDIFICIO, NOM_EDIFICIO, DIRECCION, ID_COMUNA, POSEE_PERM_MUN FROM tb_edificio WHERE ID_COMUNA = "+cod+"; ";
+            
+             ResultSet rs = stms.executeQuery(listar);
+             
+             while(rs.next())
+             {
+                 Edificio e = new Edificio();
+                 
+                 e.setId_edificio(rs.getString("ID_EDIFICIO"));
+                 e.setN_edifico(rs.getString("NOM_EDIFICIO"));
+                 e.setDireccion(rs.getString("DIRECCION"));
+                 e.setId_comuna(rs.getInt("ID_COMUNA"));
+                 e.setPosee_permiso(rs.getInt("POSEE_PERM_MUN"));
+                 
+                 list_edi.add(e);
+             }
+             return list_edi;
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return list_edi;
+        }
+    }
+    public String TraeComuna( int com)
+    {
+        String comuna = "";
+        try {
+             Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+            
+            String listar = "SELECT DESCRIPCION FROM tb_comuna WHERE ID_COMUNA = "+com+"; ";
+            
+             ResultSet rs = stms.executeQuery(listar);
+             System.out.println("query lista=>"+listar);
+             while(rs.next())
+             {
+                 comuna = rs.getString("DESCRIPCION");
+                 
+             }
+             return comuna;
+             
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return comuna;
+        }
+    
+    }
+    
+    public void Hablitar(String id)
+    {
+        try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            String hab = "UPDATE tb_edificio set posee_perm_mun = 1 WHERE id_edificio = '"+id+"';";
+            
+            stms.executeUpdate(hab);
+            
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
 }

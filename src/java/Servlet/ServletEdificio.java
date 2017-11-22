@@ -44,7 +44,8 @@ public class ServletEdificio extends HttpServlet {
             
             
             String btn_guardar = request.getParameter("btn_guardar");
-            
+            String btn_buscar = request.getParameter("btn_buscar");
+            String btn_habilitar = request.getParameter("btn_habilitar");
             
             if(btn_guardar != null)
             {
@@ -68,10 +69,31 @@ public class ServletEdificio extends HttpServlet {
               
               dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");
                 dispatcher.forward(request, response);
-                
-            
+
             }
-            
+            if(btn_buscar != null)
+            {
+                String cod = request.getParameter("comuna");
+                int c  = Integer.parseInt(cod);
+                sesion.setAttribute("com", c);
+                ControlEdificio ce = new ControlEdificio(); 
+                sesion.setAttribute("lista_edi", ce.ListarEdificios(c));  
+                dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
+                dispatcher.forward(request, response);
+                
+            }
+            if(btn_habilitar != null)
+            {
+                String id = request.getParameter("id");
+                ControlEdificio c = new ControlEdificio();
+                c.Hablitar(id);
+                int com = (Integer) sesion.getAttribute("com");
+                ControlEdificio ce = new ControlEdificio(); 
+                sesion.setAttribute("lista_edi", ce.ListarEdificios(com));  
+                dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
+                dispatcher.forward(request, response);
+                
+            }
             
         }
     }
