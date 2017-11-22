@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-11-2017 a las 02:18:27
+-- Tiempo de generación: 22-11-2017 a las 20:46:32
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -117,11 +117,16 @@ CREATE TABLE IF NOT EXISTS `tb_edificio` (
   `DIRECCION` varchar(50) NOT NULL,
   `ID_COMUNA` int(3) NOT NULL,
   `POSEE_PERM_MUN` int(1) DEFAULT '0',
-  `RUT` varchar(10) NOT NULL,
   PRIMARY KEY (`ID_EDIFICIO`),
-  KEY `ID_COMUNA` (`ID_COMUNA`),
-  KEY `RUT` (`RUT`)
+  KEY `ID_COMUNA` (`ID_COMUNA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tb_edificio`
+--
+
+INSERT INTO `tb_edificio` (`ID_EDIFICIO`, `NOM_EDIFICIO`, `DIRECCION`, `ID_COMUNA`, `POSEE_PERM_MUN`) VALUES
+('papo', 'El edificio rojo', 'san camilo 69', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -150,8 +155,7 @@ ALTER TABLE `tb_departamento`
 -- Filtros para la tabla `tb_edificio`
 --
 ALTER TABLE `tb_edificio`
-  ADD CONSTRAINT `tb_edificio_ibfk_1` FOREIGN KEY (`ID_COMUNA`) REFERENCES `tb_comuna` (`ID_COMUNA`),
-  ADD CONSTRAINT `tb_edificio_ibfk_2` FOREIGN KEY (`RUT`) REFERENCES `tb_usuario` (`RUT`);
+  ADD CONSTRAINT `tb_edificio_ibfk_1` FOREIGN KEY (`ID_COMUNA`) REFERENCES `tb_comuna` (`ID_COMUNA`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
