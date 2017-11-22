@@ -46,6 +46,8 @@ public class ServletEdificio extends HttpServlet {
             String btn_guardar = request.getParameter("btn_guardar");
             String btn_buscar = request.getParameter("btn_buscar");
             String btn_habilitar = request.getParameter("btn_habilitar");
+            String btn_volver = request.getParameter("btn_volver");
+            
             
             if(btn_guardar != null)
             {
@@ -94,6 +96,13 @@ public class ServletEdificio extends HttpServlet {
                 dispatcher.forward(request, response);
                 
             }
+            if (btn_volver != null)
+            {
+             dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");
+                dispatcher.forward(request, response);
+
+            }
+            
             
         }
     }

@@ -8,8 +8,7 @@
 <%@page import="Modelo.Comuna"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%HttpSession sesion = request.getSession(true);
-    ArrayList<Comuna> com = (ArrayList<Comuna>) sesion.getAttribute("comuna");
-   
+    ArrayList<Comuna> com = (ArrayList<Comuna>) sesion.getAttribute("comuna");  
  %>
 <!DOCTYPE html>
 <html>
@@ -88,10 +87,18 @@
                     <tr>
                         <td colspan="2" class="text-center">
                             <input type="submit" name="btn_guardar" value="Guardar Edificio" class="btn btn-success">
+                         <form action="./ServletEdificio" method="POST" name="f3">
+                              </form>
+                        
+                            <input type="submit" name="btn_volver" value="Volver" class="btn btn-danger">
+                       
                         </td>
+                        
+                   
+                    </form>
                     </tr>
                 </table>
-                </form>
+               
             </div>
             
             

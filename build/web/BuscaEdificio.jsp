@@ -63,6 +63,7 @@ String control = "display:none";
                         <th class="text-center">Comuna</th>
                         <th class="text-center">Posee Permiso</th>
                         <th class="text-center">Habilitar Permisos</th>
+                        <th class="text-center">Editar Edificio</th>
                         
                     </tr>
                <!-- </table> -->
@@ -74,24 +75,29 @@ String control = "display:none";
                         <td><%=e.getId_edificio() %></td>
                     <input type="text" name="id" value="<%=e.getId_edificio() %>" style="display: none">
                         <td><%=e.getN_edifico() %></td>
+                    <input type="text" name="nombre" value="<%=e.getN_edifico() %>" style="display: none">
                         <td><%=e.getDireccion() %></td>
+                    <input type="text" name="direccion" value="<%=e.getDireccion() %>" style="display: none">    
                         <td><% ControlEdificio c = new ControlEdificio();
                         String comuna =c.TraeComuna(e.getId_comuna());
                         %><h6 style="color : blue"><%= comuna %></h6></td>
-                        <td><% if(e.getPosee_permiso() == 0)
-                            
+                        <td><% if(e.getPosee_permiso() == 0)     
                         { control = "  "; %><h6 style="color: red ">No posee Permisos</h6> <%}
                           else {%><h6 style="color: green">Posee Permisos</h6> <% }
                         %></td>
+                    <input type="text" name="permiso" value="<%=e.getPosee_permiso() %>" style="display: none">
                         <td> <input type="submit" name="btn_habilitar" value="Habilitar Permisos" class="btn btn-danger" style="<%= control %>" ></td>
-                        
+                        <td>
+                            <input type="submit" name="btn_editar" value="Editar" class="btn btn-warning">
+                        </td>
+                        </form>
                          </tr>
                    
                    
                 
                          <%}}else {%> <%}%>
                 </table>  
-</form>
+
         </div>                                   
                                   
     </body>
