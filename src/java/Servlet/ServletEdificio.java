@@ -140,9 +140,14 @@ public class ServletEdificio extends HttpServlet {
                 edi_nuevo.setDireccion(direccion);
                 edi_nuevo.setPosee_permiso(p);
                 
-                
-                
                 Edificio edi_ori = (Edificio) sesion.getAttribute("mod_edi_ori");
+                
+                ControlEdificio edit = new ControlEdificio();
+                edit.modEdificio(edi_nuevo, edi_ori);
+                
+                dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");
+                dispatcher.forward(request, response);
+                
             
             }
         }

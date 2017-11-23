@@ -5,7 +5,8 @@
  */
 package Servlet;
 
-import Controlador.ControlEdificio;
+import Controlador.ControlArrendatario;
+import Modelo.Departamento;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -18,10 +19,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author papalominos
+ * Author     : Kathy
  */
-@WebServlet(name = "ServletPrincipal", urlPatterns = {"/ServletPrincipal"})
-public class ServletPrincipal extends HttpServlet {
+@WebServlet(name = "ServletArrendatario", urlPatterns = {"/ServletArrendatario"})
+public class ServletArrendatario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,41 +38,29 @@ public class ServletPrincipal extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String btnIngresar = request.getParameter("btn_guardar");
             
-             RequestDispatcher dispatcher = null;
-              HttpSession sesion = request.getSession();
-             
+            HttpSession sesion = request.getSession();
+            RequestDispatcher dispatcher;
+            
+            ControlArrendatario ctrlArrendatario = new ControlArrendatario();
+            
+            if (btnIngresar != null){
+                if(ctrlArrendatario.buscarEdificio((String.valueOf(sesion.getAttribute("id_edificio"))))){
+                    if(ctrlArrendatario.permisoMunicipal(String.valueOf(sesion.getAttribute("id_edificio")))){
+                    Departamento departamento = new Departamento();
+                    departamento.setId_edificio(request.getParameter("id_edificio"));
+                    departamento.setId_departamento(Integer.parseInt(request.getParameter("id_depto")));
+                    departamento.setResidente(request.getParameter("txtResidente"));
+                    
+                        sesion.setAttribute("registrarCliente", "Cliente Registrado");
+                        dispatcher = getServletContext().getRequestDispatcher("/09RegistrarCliente.jsp");
+                        dispatcher.forward(request, response); 
+                    }
+                }
+                }
            
-            // validar si la sesion de login esta iniciada !!!
             
-            String btn_nuevo_edificio = request.getParameter("btn_nEdificio");
-            String btn_buscar_edificio = request.getParameter("btn_buscarEdi");
-            String btn_Ingresa_Depto = request.getParameter("btn_Ingresa_Departamento");
-            String btn_ususarios = request.getParameter("btn_usuarios");
-            
-            if (btn_nuevo_edificio != null)
-            {
-                  ControlEdificio ce = new ControlEdificio();
-                  
-                  sesion.setAttribute("comuna", ce.ObtererComuna());
-                   dispatcher = request.getRequestDispatcher("/CrearNuevoEdificio.jsp");
-                    dispatcher.forward(request, response);
-                   
-            }
-            if(btn_buscar_edificio != null)
-            {
-             ControlEdificio ce = new ControlEdificio();
-                  
-                  sesion.setAttribute("comuna", ce.ObtererComuna());
-                   dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
-                    dispatcher.forward(request, response);
-            }
-            
-            if(btn_Ingresa_Depto != null)
-            {
-            dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
-                    dispatcher.forward(request, response);
-            }
             
         }
     }

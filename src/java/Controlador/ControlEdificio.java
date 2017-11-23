@@ -141,5 +141,41 @@ public class ControlEdificio {
         } catch (Exception e) {
             e.getStackTrace();
         }
+    }   
+    public boolean modEdificio(Edificio enuevo, Edificio eori)
+    {
+        
+             try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            String n,d;
+            int p;
+            
+            if(!eori.getN_edifico().equals(enuevo.getN_edifico()))
+            {
+                n = enuevo.getN_edifico();
+            }else {n = eori.getN_edifico(); }
+            if(!eori.getDireccion().equals(enuevo.getDireccion()))
+            {
+                d = enuevo.getDireccion();
+            }else {d = eori.getDireccion();}
+            if(enuevo.getPosee_permiso() == 3)
+            {
+                p = eori.getPosee_permiso();
+            }else{p = enuevo.getPosee_permiso();}
+            
+            
+            String act = "UPDATE tb_edificio set NOM_EDIFICIO = '"+n+"', DIRECCION = '"+d+"',POSEE_PERM_MUN = "+p+"  WHERE ID_EDIFICIO = '"+eori.getId_edificio()+"' AND NOM_EDIFICIO = '"+eori.getN_edifico()+"';";
+            stms.executeUpdate(act);
+             return true;
+            
+             
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    
     }
 }
