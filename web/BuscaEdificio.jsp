@@ -81,7 +81,9 @@ String control = "display:none";
                         <td><% ControlEdificio c = new ControlEdificio();
                         String comuna =c.TraeComuna(e.getId_comuna());
                         %><h6 style="color : blue"><%= comuna %></h6></td>
-                        <td><% if(e.getPosee_permiso() == 0)     
+                    <input type="text" name="comuna" value="<%=e.getId_comuna() %>" style="display: none"> 
+                      
+                    <td><% if(e.getPosee_permiso() == 0)     
                         { control = "  "; %><h6 style="color: red ">No posee Permisos</h6> <%}
                           else {%><h6 style="color: green">Posee Permisos</h6> <% }
                         %></td>

@@ -47,6 +47,8 @@ public class ServletEdificio extends HttpServlet {
             String btn_buscar = request.getParameter("btn_buscar");
             String btn_habilitar = request.getParameter("btn_habilitar");
             String btn_volver = request.getParameter("btn_volver");
+            String btn_editar = request.getParameter("btn_editar");
+            String btn_guardar_editado = request.getParameter("btn_guardar_editado");
             
             
             if(btn_guardar != null)
@@ -103,7 +105,45 @@ public class ServletEdificio extends HttpServlet {
 
             }
             
+            if (btn_editar != null)
+            {
+             String id = request.getParameter("id");
+             String nombre = request.getParameter("nombre");
+             String direccion = request.getParameter("direccion");
+             String comuna = request.getParameter("comuna");
+             int c = Integer.parseInt(comuna);
+             String permiso = request.getParameter("permiso");
+             int p = Integer.parseInt(permiso);
+             
+             Edificio e = new Edificio();
+             e.setId_edificio(id);
+             e.setN_edifico(nombre);
+             e.setDireccion(direccion);
+             e.setId_comuna(c);
+             e.setPosee_permiso(p);
+             sesion.setAttribute("mod_edi_ori", e);
+             dispatcher = request.getRequestDispatcher("/EditarEdificio.jsp");
+             dispatcher.forward(request, response);
+            }  
+            if(btn_guardar_editado != null)
+            {
+                Edificio edi_nuevo = new Edificio();
+                String codigo = request.getParameter("codigo");
+                String nombre = request.getParameter("nombre");
+                String direccion = request.getParameter("direccion");
+                String permiso = request.getParameter("permiso");
+                int p = Integer.parseInt(permiso);
+                
+                edi_nuevo.setId_edificio("codigo");
+                edi_nuevo.setN_edifico("nombre");
+                edi_nuevo.setDireccion(direccion);
+                edi_nuevo.setPosee_permiso(p);
+                
+                
+                
+                Edificio edi_ori = (Edificio) sesion.getAttribute("mod_edi_ori");
             
+            }
         }
     }
 

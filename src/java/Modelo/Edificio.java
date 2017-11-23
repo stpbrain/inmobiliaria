@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Edificio {
     
-    String id_edificio,n_edifico,direccion,rut;
+    String id_edificio,n_edifico,direccion;
     int id_comuna;
     int posee_permiso; // la variable en la BD es bool , pero se maneja con 0 = false y 1= true  
 
@@ -19,7 +19,7 @@ public class Edificio {
         this.id_edificio = "";
         this.n_edifico = "";
         this.direccion = "";
-        this.rut = "";
+       
         this.id_comuna = 0;
         this.posee_permiso = 0;
     }
@@ -50,14 +50,6 @@ public class Edificio {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public String getRut() {
-        return rut;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
     }
 
     public int getId_comuna() {
