@@ -109,7 +109,7 @@ public class ServletEdificio extends HttpServlet {
             if (btn_editar != null)
             {
              String id = request.getParameter("id");
-             String nombre = request.getParameter("nombre");
+             String nombre = request.getParameter("nombre_l");
              String direccion = request.getParameter("direccion");
              String comuna = request.getParameter("comuna");
              int c = Integer.parseInt(comuna);
@@ -135,8 +135,8 @@ public class ServletEdificio extends HttpServlet {
                 String permiso = request.getParameter("permiso");
                 int p = Integer.parseInt(permiso);
                 
-                edi_nuevo.setId_edificio("codigo");
-                edi_nuevo.setN_edifico("nombre");
+                edi_nuevo.setId_edificio(codigo);
+                edi_nuevo.setN_edifico(nombre);
                 edi_nuevo.setDireccion(direccion);
                 edi_nuevo.setPosee_permiso(p);
                 

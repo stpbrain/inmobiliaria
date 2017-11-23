@@ -41,7 +41,7 @@ Edificio edi = (Edificio) sesion.getAttribute("mod_edi_ori");
                 </tr>
                 <tr>
                     <td>Ingrese nuevo nombre de Edificio:</td>
-                    <td><input type="text" name="nombre" placeholder="el nombre actual es : <%=edi.getN_edifico()%>" class="form-control" ></td>
+                    <td><input type="text" name="nombre_n" placeholder="el nombre actual es : <%=edi.getN_edifico()%>" class="form-control" ></td>
                 </tr>
                 <tr>
                     <td>Ingrese nueva Direccion :</td>

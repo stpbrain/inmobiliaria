@@ -74,8 +74,8 @@ String control = "display:none";
                          
                         <td><%=e.getId_edificio() %></td>
                     <input type="text" name="id" value="<%=e.getId_edificio() %>" style="display: none">
-                        <td><%=e.getN_edifico() %></td>
-                    <input type="text" name="nombre" value="<%=e.getN_edifico() %>" style="display: none">
+                        <td><%=e.getN_edifico()%></td>
+                    <input type="text" name="nombre_l" value="<%=e.getN_edifico()%>" style="display: none">
                         <td><%=e.getDireccion() %></td>
                     <input type="text" name="direccion" value="<%=e.getDireccion() %>" style="display: none">    
                         <td><% ControlEdificio c = new ControlEdificio();
