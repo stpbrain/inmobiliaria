@@ -27,8 +27,9 @@
         </div>
           
             <div class=" container text-center " > 
-                <form action="./ServletArrendatario" method="POST" name="formArrendatario">
+                
                 <table class="table-active ">
+                    <form action="./ServletArrendatario" method="POST" name="formArrendatario">
                     <th colspan="2" class="text-center">
                     <h3>Nuevo Arrendatario</h3><br>
                     <h4>Ingrese los datos necesarios para registrar el nuevo arrendatario</h4>
@@ -60,14 +61,14 @@
                     <tr>
                         <td colspan="2" class="text-center">
                             <input type="submit" name="btn_guardar" value="Confirmar arrendatario" class="btn btn-success">
-                        
+        </form>
+                    <form action="./ServletPrincipal" method="POST" name="arr">
                         
                             <input type="submit" name="btn_volver" value="Volver" class="btn btn-danger" a href="index.jsp">
-                       
+                       </form>
                         </td>
                         
                    
-                    </form>
                     </tr>
                 </table>
          </form>
