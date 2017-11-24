@@ -7,6 +7,7 @@ package Controlador;
 
 import DB.Conexion;
 import Modelo.Departamento;
+import Modelo.Edificio;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -119,24 +120,22 @@ public class ControlArrendatario {
     
     public ArrayList ObtenerIdEdificio()
     {
-     ArrayList<Departamento> depa = new ArrayList<Departamento>();
+     ArrayList<Edificio> depa = new ArrayList<Edificio>();
         try {
             Conexion conn = new Conexion();
             Connection conexion = conn.getConnection("inmobiliaria");
             Statement stms = conexion.createStatement();
             
-            String departamentos = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento;";
+            String edificio = "SELECT id_edificio, nom_edificio FROM tb_edificio;";
             
-             ResultSet rs = stms.executeQuery(departamentos);
+             ResultSet rs = stms.executeQuery(edificio);
              
              while(rs.next())
              {
-                 Departamento dpto = new Departamento();
-                 dpto.setId_departamento(rs.getInt("id_departamento"));
-                 dpto.setId_edificio(rs.getString("id_edificio"));
-                 dpto.setNumero_d(rs.getInt("numero"));
-                 dpto.setResidente(rs.getString("residente"));
-                 depa.add(dpto);
+                 Edificio edif = new Edificio();
+                 edif.setId_edificio(rs.getString("id_edificio"));
+                 edif.setN_edifico(rs.getString("nom_edificio"));
+                 depa.add(edif);
                
              }
              return depa;

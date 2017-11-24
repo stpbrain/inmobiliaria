@@ -48,6 +48,7 @@ public class ServletPrincipal extends HttpServlet {
             String btn_nuevo_edificio = request.getParameter("btn_nEdificio");
             String btn_buscar_edificio = request.getParameter("btn_buscarEdi");
             String btn_Ingresa_Depto = request.getParameter("btn_Ingresa_Departamento");
+            String btn_buscar_depto = request.getParameter("btn_Buscar_Departamento");
             String btn_usuarios = request.getParameter("btn_usuarios");
             
             if (btn_nuevo_edificio != null)
@@ -66,6 +67,11 @@ public class ServletPrincipal extends HttpServlet {
                     sesion.setAttribute("comuna", ce.ObtererComuna());
                     dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
                     dispatcher.forward(request, response);
+            }
+            
+            if (btn_buscar_depto != null){
+                dispatcher = request.getRequestDispatcher("/BuscarDepartamento.jsp");
+                dispatcher.forward(request, response);
             }
             
             if(btn_Ingresa_Depto != null)
