@@ -125,9 +125,9 @@ public class ControlArrendatario {
             Connection conexion = conn.getConnection("inmobiliaria");
             Statement stms = conexion.createStatement();
             
-            String comunas = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento;";
+            String departamentos = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento;";
             
-             ResultSet rs = stms.executeQuery(comunas);
+             ResultSet rs = stms.executeQuery(departamentos);
              
              while(rs.next())
              {

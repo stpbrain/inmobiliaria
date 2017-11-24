@@ -9,7 +9,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%HttpSession sesion = request.getSession(true);
-    ArrayList<Departamento> dep = (ArrayList<Departamento>) sesion.getAttribute("id_edificio");  
+    ArrayList<Edificio> dep = (ArrayList<Edificio>) sesion.getAttribute("id_edificio");  
  %>
 
 <!DOCTYPE html>
@@ -43,13 +43,12 @@
                     <tr>                        
                         <td><h5>Condominio:</h5></td>
                         <td>
-                             <select name="id_edificio">
+                            <select name="id_edificio">
                                <%  
-                               for (Departamento elem : dep) {
-                               %>  <option  value="<%= elem.getId_edificio() %>" > </option>
-                                   
+                               for (Edificio elem : dep) {
+                               %>  <option  value="<%= elem.getN_edifico()%>" ><%= elem.getId_edificio() %> </option>                                   
                                    <% } %>                                    
-                              </select>
+                            </select>
                         </td>
                     </tr>
                     <tr>   
