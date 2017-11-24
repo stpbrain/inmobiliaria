@@ -33,6 +33,7 @@ public class ServletArrendatario extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String btnIngresar = request.getParameter("btn_guardar");
             String btnBuscar = request.getParameter("btn_buscar"); //falta crear el botón buscar
+            String btnVolver = request.getParameter("btn_volver");
             
             HttpSession sesion = request.getSession();
             RequestDispatcher dispatcher;
@@ -67,6 +68,13 @@ public class ServletArrendatario extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp"); //cambiar
                 dispatcher.forward(request, response);
                 
+            }
+            
+            if (btnVolver != null)
+            {
+             dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");
+                dispatcher.forward(request, response);
+
             }
         }
     }           

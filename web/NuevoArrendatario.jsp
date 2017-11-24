@@ -76,7 +76,7 @@
         </form>
                     <form action="./ServletPrincipal" method="POST" name="arr">
                         
-                            <input type="submit" name="btn_volver" value="Volver" class="btn btn-danger" a href="index.jsp">
+                            <input type="submit" name="btn_volver" value="Volver" class="btn btn-danger">
                        </form>
                         </td>
                         
