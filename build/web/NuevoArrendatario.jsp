@@ -4,9 +4,13 @@
     Author     : Kathy
 --%>
 
+<%@page import="Modelo.Departamento"%>
 <%@page import="Modelo.Edificio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%HttpSession sesion = request.getSession(true);
+    ArrayList<Departamento> dep = (ArrayList<Departamento>) sesion.getAttribute("id_departamento");  
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +42,15 @@
                     
                     <tr>                        
                         <td><h5>Condominio:</h5></td>
-                        <td><input type="text" name="id_edificio" class="form-control" maxlength="4" placeholder="Ingrese Codigo de 4 digitos" </td>
+                        <td>
+                             <select name="id_edificio">
+                               <%  
+                               for (Departamento elem : dep) {
+                               %>  <option  value="<%= elem.getId_edificio() %>" > </option>
+                                   
+                                   <% } %>                                    
+                              </select>
+                        </td>
                     </tr>
                     <tr>   
                         <td>

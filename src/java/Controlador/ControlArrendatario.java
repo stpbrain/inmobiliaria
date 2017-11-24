@@ -117,4 +117,34 @@ public class ControlArrendatario {
         }
     }
     
+    public ArrayList ObtenerIdEdificio()
+    {
+     ArrayList<Departamento> depa = new ArrayList<Departamento>();
+        try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+            String comunas = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento;";
+            
+             ResultSet rs = stms.executeQuery(comunas);
+             
+             while(rs.next())
+             {
+                 Departamento dpto = new Departamento();
+                 dpto.setId_departamento(rs.getInt("id_departamento"));
+                 dpto.setId_edificio(rs.getString("id_edificio"));
+                 dpto.setNumero_d(rs.getInt("numero"));
+                 dpto.setResidente(rs.getString("residente"));
+                 depa.add(dpto);
+               
+             }
+             return depa;
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return depa;
+        }
+    }
+    
 }

@@ -25,15 +25,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ServletArrendatario", urlPatterns = {"/ServletArrendatario"})
 public class ServletArrendatario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -49,13 +41,15 @@ public class ServletArrendatario extends HttpServlet {
                 String idEdificio = request.getParameter("id_edificio");
                 int numDepto = Integer.parseInt("num_depto");
                 String residente = request.getParameter("txtResidente");
-                                
+                
+                ControlArrendatario ctrlArrendatario = new ControlArrendatario();
+                
                 Departamento dpto = new Departamento();
                 dpto.setId_edificio(idEdificio);
                 dpto.setId_departamento(numDepto);
                 dpto.setResidente(residente);
                 
-                ControlArrendatario ctrlArrendatario = new ControlArrendatario();
+                
                 ctrlArrendatario.GuardarDpto(dpto);
                 
                 dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");

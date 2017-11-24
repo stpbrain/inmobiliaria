@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Controlador.ControlArrendatario;
 import Controlador.ControlEdificio;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,30 +48,32 @@ public class ServletPrincipal extends HttpServlet {
             String btn_nuevo_edificio = request.getParameter("btn_nEdificio");
             String btn_buscar_edificio = request.getParameter("btn_buscarEdi");
             String btn_Ingresa_Depto = request.getParameter("btn_Ingresa_Departamento");
-            String btn_ususarios = request.getParameter("btn_usuarios");
+            String btn_usuarios = request.getParameter("btn_usuarios");
             
             if (btn_nuevo_edificio != null)
             {
-                  ControlEdificio ce = new ControlEdificio();
+                    ControlEdificio ce = new ControlEdificio();
                   
-                  sesion.setAttribute("comuna", ce.ObtererComuna());
-                   dispatcher = request.getRequestDispatcher("/CrearNuevoEdificio.jsp");
+                    sesion.setAttribute("comuna", ce.ObtererComuna());
+                    dispatcher = request.getRequestDispatcher("/CrearNuevoEdificio.jsp");
                     dispatcher.forward(request, response);
                    
             }
             if(btn_buscar_edificio != null)
             {
-             ControlEdificio ce = new ControlEdificio();
+                    ControlEdificio ce = new ControlEdificio();
                   
-                  sesion.setAttribute("comuna", ce.ObtererComuna());
-                   dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
+                    sesion.setAttribute("comuna", ce.ObtererComuna());
+                    dispatcher = request.getRequestDispatcher("/BuscaEdificio.jsp");
                     dispatcher.forward(request, response);
             }
             
             if(btn_Ingresa_Depto != null)
             {
-            dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
-                    dispatcher.forward(request, response);
+                ControlArrendatario ctrlArrendatario = new ControlArrendatario();
+                sesion.setAttribute("id_edificio", ctrlArrendatario.ObtenerIdEdificio());
+                dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
+                dispatcher.forward(request, response);
             }
             
         }
