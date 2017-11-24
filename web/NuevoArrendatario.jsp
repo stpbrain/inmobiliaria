@@ -46,7 +46,7 @@
                             <select name="id_edificio">
                                <%  
                                for (Edificio elem : dep) {
-                               %>  <option  value="<%= elem.getId_edificio()%>" > <%= elem.getId_edificio() %> </option>                                   
+                               %>  <option  value="<%= elem.getId_edificio()%>" > <%= elem.getN_edifico() %> </option>                                   
                                    <% } %>                                    
                             </select>
                         </td>

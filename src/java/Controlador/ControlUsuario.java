@@ -10,6 +10,7 @@ import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 /**
  *
  * @author pc-ccarreno
@@ -91,5 +92,37 @@ public class ControlUsuario {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public ArrayList ListarUsuario()
+    {
+        ArrayList<Usuario> lu = new ArrayList<Usuario>();
+        
+        try {
+             Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+            String listUser = "Select rut, nom_usuario from tb_usuario ;";
+            
+             ResultSet rs = stms.executeQuery(listUser);
+
+            if (rs != null && rs.next()) {
+                
+                Usuario u = new Usuario();
+                u.setRut(rs.getString("rut"));
+                u.setN_usuario(rs.getString("nom_usuario"));
+                u.setPass("");
+                lu.add(u);
+            }
+            
+            return lu;
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return lu;
+        }
+    
+    
     }
 }

@@ -7,6 +7,7 @@ package Servlet;
 
 import Controlador.ControlArrendatario;
 import Controlador.ControlEdificio;
+import Controlador.ControlUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -70,6 +71,7 @@ public class ServletPrincipal extends HttpServlet {
             }
             
             if (btn_buscar_depto != null){
+                
                 dispatcher = request.getRequestDispatcher("/BuscarDepartamento.jsp");
                 dispatcher.forward(request, response);
             }
@@ -82,7 +84,13 @@ public class ServletPrincipal extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
                 dispatcher.forward(request, response);
             }
-            
+            if(btn_usuarios != null)
+            {
+               ControlUsuario list = new ControlUsuario();
+               sesion.setAttribute("listUsuario", list.ListarUsuario());
+               dispatcher = request.getRequestDispatcher("/Usuarios.jsp");
+                dispatcher.forward(request, response);
+            }
         }
     }
 
