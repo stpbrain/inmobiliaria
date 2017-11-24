@@ -55,6 +55,7 @@
                     <td> <img src="img/nuevoEdificio.jpg" width="120" height="120"> </td>
                     <td><img src="img/BuscarEdificio.jpg" width="120" height="120"></td>
                     <td><img src="img/arriendo.jpg" width="120" height="120"></td>
+                    <td><img src="img/buscar_departamentos.jpg" width="120" height="120"></td>
                     <td><img src="img/user.jpg" width="120" height="120"></td>
                 </tr>
                 <tr>
@@ -66,6 +67,9 @@
                     </td>
                     <td>
                         <input type="submit" name="btn_Ingresa_Departamento"  value="Ingresar Departamento" class="btn btn-danger">
+                    </td>
+                    <td>
+                        <input type="submit" name="btn_Buscar_Departamento"  value="Buscar Departamento" class="btn btn-primary">
                     </td>
                     <td>
                         <input type="submit" name="btn_usuarios"  value="Usuarios" class="btn btn-warning">
