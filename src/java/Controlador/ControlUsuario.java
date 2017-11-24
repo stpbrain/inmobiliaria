@@ -37,7 +37,7 @@ public class ControlUsuario {
             return true;
             
         } catch (Exception e) {
-            e.getStackTrace();
+            e.printStackTrace();
             return false;
         }
     }
@@ -69,7 +69,7 @@ public class ControlUsuario {
             }
 
         } catch (Exception e) {
-            e.getStackTrace();
+            e.printStackTrace();
         }
         
         return usuario;

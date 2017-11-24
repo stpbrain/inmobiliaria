@@ -9,7 +9,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%HttpSession sesion = request.getSession(true);
-    ArrayList<Departamento> dep = (ArrayList<Departamento>) sesion.getAttribute("id_departamento");  
+    ArrayList<Departamento> dep = (ArrayList<Departamento>) sesion.getAttribute("id_edificio");  
  %>
 
 <!DOCTYPE html>
