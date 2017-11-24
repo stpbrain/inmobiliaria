@@ -128,10 +128,7 @@ public class ControlArrendatario {
             
             String edificio = "SELECT id_edificio, nom_edificio FROM tb_edificio;";
             
-
-
              ResultSet rs = stms.executeQuery(edificio);
-
              
              while(rs.next())
              {
