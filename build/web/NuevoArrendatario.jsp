@@ -45,7 +45,7 @@
                             <h5>Número de departamento:</h5>
                         </td>
                         <td>
-                            <input type="text" name="id_depto" class="form-control"
+                            <input type="text" name="num_dpto" class="form-control"
                         </td>
                         
                     </tr>

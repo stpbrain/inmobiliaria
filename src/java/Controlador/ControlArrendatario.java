@@ -97,5 +97,24 @@ public class ControlArrendatario {
         }
     }
     
+    public boolean GuardarDpto(Departamento dpto)
+    {
+        try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stms = conexion.createStatement();
+            
+            String consulta = "INSERT INTO tb_departamento VALUES ('"+ dpto.getId_departamento() +"','" + dpto.getId_edificio() +"','" + dpto.getNumero_d() +"'," + dpto.getResidente() + ");";
+            
+            stms.executeUpdate(consulta);           
+            
+            System.out.println("Fue agregado: "+consulta);
+            
+            return true;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    }
     
 }
