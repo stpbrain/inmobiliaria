@@ -79,6 +79,7 @@ public class ServletPrincipal extends HttpServlet {
             {
                 ControlArrendatario ctrlArrendatario = new ControlArrendatario();
                 sesion.setAttribute("id_edificio", ctrlArrendatario.ObtenerIdEdificio());
+              
                 dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
                 dispatcher.forward(request, response);
             }
