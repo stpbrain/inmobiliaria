@@ -34,12 +34,14 @@ public class ServletArrendatario extends HttpServlet {
             String btnIngresar = request.getParameter("btn_guardar");
             String btnBuscar = request.getParameter("btn_buscar"); //falta crear el botón buscar
             String btnVolver = request.getParameter("btn_volver");
+            String btnModificar = request.getParameter("btn_modificar");
             
             HttpSession sesion = request.getSession();
             RequestDispatcher dispatcher;
                        
             if (btnIngresar != null){
                 String idEdificio = request.getParameter("id_edificio");
+                //falta el idDepartamento que es autoincrementable (?)
                 int numDepto = Integer.parseInt("num_depto");
                 String residente = request.getParameter("txtResidente");
                 
@@ -47,7 +49,7 @@ public class ServletArrendatario extends HttpServlet {
                 
                 Departamento dpto = new Departamento();
                 dpto.setId_edificio(idEdificio);
-                dpto.setId_departamento(numDepto);
+                dpto.setNumero_d(numDepto);
                 dpto.setResidente(residente);
                 
                 
@@ -75,6 +77,18 @@ public class ServletArrendatario extends HttpServlet {
              dispatcher = request.getRequestDispatcher("/AdminCentral.jsp");
                 dispatcher.forward(request, response);
 
+            }
+            
+            if (btnModificar != null){
+
+             String residente = request.getParameter("residente");
+             
+             Departamento nuevoDepto = new Departamento();
+             nuevoDepto.setResidente(residente);
+
+             sesion.setAttribute("modifica", nuevoDepto);
+             dispatcher = request.getRequestDispatcher("/NuevoArrendatario.jsp");
+             dispatcher.forward(request, response);
             }
         }
     }           
