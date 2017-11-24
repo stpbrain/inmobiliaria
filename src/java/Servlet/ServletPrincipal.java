@@ -70,6 +70,7 @@ public class ServletPrincipal extends HttpServlet {
             }
             
             if (btn_buscar_depto != null){
+                
                 dispatcher = request.getRequestDispatcher("/BuscarDepartamento.jsp");
                 dispatcher.forward(request, response);
             }
