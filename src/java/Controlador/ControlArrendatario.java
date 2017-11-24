@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on : 20-nov-2017, 21:51:07
@@ -173,37 +174,35 @@ public class ControlArrendatario {
         }
     }
     
-    public boolean buscarDepartamento(String numEdificio){
-        ArrayList<Departamento> depa = new ArrayList<Departamento>();
-         try {
+     public List<Departamento> buscarDepartamento(String numEdificio) {
+        List<Departamento> depa = new ArrayList<>();
+        try {
             Conexion conn = new Conexion();
             Connection conexion = conn.getConnection("inmobiliaria");
             Statement stmt = conexion.createStatement();
-            
+
             String consulta = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento "
-                    + "WHERE id_edificio = " + numEdificio + ";";
-            
+                    + "WHERE id_edificio = '" + numEdificio + "'";
+
             ResultSet rs = stmt.executeQuery(consulta);
-             
-             while(rs.next())
-             {
-                 Departamento dpto = new Departamento();
-                 dpto.setId_departamento(rs.getInt("id_departamento"));
-                 dpto.setId_edificio(rs.getString("id_edificio"));
-                 dpto.setNumero_d(rs.getInt("numero"));
-                 dpto.setResidente(rs.getString("residente"));
-                 depa.add(dpto);
-             }
-             
-             return depa;
-            
+
+            while (rs.next()) {
+                Departamento dpto = new Departamento();
+                dpto.setId_departamento(rs.getInt("id_departamento"));
+                dpto.setId_edificio(rs.getString("id_edificio"));
+                dpto.setNumero_d(rs.getInt("numero"));
+                dpto.setResidente(rs.getString("residente"));
+                depa.add(dpto);
+            }
+
+            return depa;
+
         } catch (Exception e) {
             e.getStackTrace();
-            return depa;
         }
-        }
+        return null;
     }
     
     
-    
-}
+    }    
+

@@ -72,6 +72,8 @@ public class ServletPrincipal extends HttpServlet {
             
             if (btn_buscar_depto != null){
                 
+                //ControlArrendatario ctrl = new ControlArrendatario();
+                //sesion.setAttribute("id_edificio", ctrl.ObtenerDepartamentos());    
                 dispatcher = request.getRequestDispatcher("/BuscarDepartamento.jsp");
                 dispatcher.forward(request, response);
             }
