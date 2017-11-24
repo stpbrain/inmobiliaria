@@ -162,8 +162,7 @@ public class ControlArrendatario {
              {
                  Departamento dpto = new Departamento();
                  dpto.setNumero_d(rs.getInt("numero"));
-                 Edificio edif = new Edificio();
-                 depa.add(dpto);
+                 //depa.add(dpto);
                
              }
              return depa;
@@ -171,6 +170,37 @@ public class ControlArrendatario {
         } catch (Exception e) {
             e.getStackTrace();
             return depa;
+        }
+    }
+    
+    public boolean buscarDepartamento(String numEdificio){
+        ArrayList<Departamento> depa = new ArrayList<Departamento>();
+         try {
+            Conexion conn = new Conexion();
+            Connection conexion = conn.getConnection("inmobiliaria");
+            Statement stmt = conexion.createStatement();
+            
+            String consulta = "SELECT id_departamento, id_edificio, numero, residente FROM tb_departamento "
+                    + "WHERE id_edificio = " + numEdificio + ";";
+            
+            ResultSet rs = stmt.executeQuery(consulta);
+             
+             while(rs.next())
+             {
+                 Departamento dpto = new Departamento();
+                 dpto.setId_departamento(rs.getInt("id_departamento"));
+                 dpto.setId_edificio(rs.getString("id_edificio"));
+                 dpto.setNumero_d(rs.getInt("numero"));
+                 dpto.setResidente(rs.getString("residente"));
+                 depa.add(dpto);
+             }
+             
+             return depa;
+            
+        } catch (Exception e) {
+            e.getStackTrace();
+            return depa;
+        }
         }
     }
     
